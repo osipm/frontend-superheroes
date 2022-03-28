@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import AddFormSuperhero from './component/addFormSuperhero/addFormSuperhero';
+import SuperheroesList from './component/superheroesList/superheroesList';
+import UpdateSuperhero from './component/updateSuperhero/updateSuperhero';
+import { useState } from 'react';
 
 function App() {
+  const [modal, setModal] = useState(false);
+  const [id, setId] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AddFormSuperhero />
+      {modal && <UpdateSuperhero id={id} setModal={setModal} />}
+      <SuperheroesList setModal={setModal} setId={setId} />
     </div>
   );
 }
