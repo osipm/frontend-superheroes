@@ -2,20 +2,20 @@ import { getSuperheroes, deleteSuperheroes } from '../../api/apiSuperheroes';
 import { useState, useEffect } from 'react';
 import style from './superheroesList.module.css';
 
-function SuperheroesList({ setModal, setId }) {
+function SuperheroesList({ setModal, setId, edit, setEdit }) {
   const [superheroes, setSuperheroes] = useState([]);
 
   const fetchSuperheroes = async e => {
-    const data = await getSuperheroes();
+    const data = await getSuperheroes().finally(() => setEdit(''));
     setSuperheroes(data);
   };
 
   useEffect(() => {
     fetchSuperheroes();
-  }, []);
+  }, [edit]);
 
   const removeSuperhero = async id => {
-    const body = await deleteSuperheroes(id);
+    const body = await deleteSuperheroes(id).finally(() => setEdit(id));
     alert(body.message);
   };
 
@@ -51,7 +51,13 @@ function SuperheroesList({ setModal, setId }) {
           </ul>
           <div>
             <button onClick={() => openModal(item.id)}>edit</button>
-            <button onClick={() => removeSuperhero(item.id)}>delete</button>
+            <button
+              onClick={() => {
+                removeSuperhero(item.id);
+              }}
+            >
+              delete
+            </button>
           </div>
         </div>
       ))}

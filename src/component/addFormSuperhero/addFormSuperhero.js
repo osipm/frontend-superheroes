@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { addSuperheroes } from '../../api/apiSuperheroes';
 import FormInput from '../formInput/formInput';
-function AddFormSuperhero() {
+function AddFormSuperhero({ setEdit }) {
   const [nickname, setNickname] = useState('');
   const [real_name, setReal_name] = useState('');
   const [origin_description, setOrigin_description] = useState('');
@@ -19,7 +19,9 @@ function AddFormSuperhero() {
       catch_phrase: catch_phrase,
       Images: Images,
     };
-    const body = await addSuperheroes(Superhero);
+    const body = await addSuperheroes(Superhero).finally(() =>
+      setEdit(nickname),
+    );
     alert(`superguru ${body.nickname} created`);
   };
   const addSuperhero = e => {

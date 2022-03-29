@@ -6,12 +6,21 @@ import { useState } from 'react';
 function App() {
   const [modal, setModal] = useState(false);
   const [id, setId] = useState('');
-
+  const [edit, setEdit] = useState('');
   return (
     <div>
-      <AddFormSuperhero />
-      {modal && <UpdateSuperhero id={id} setModal={setModal} />}
-      <SuperheroesList setModal={setModal} setId={setId} />
+      <h2>Add a new superhero</h2>
+      <AddFormSuperhero setEdit={setEdit} />
+      <hr />
+      {modal && (
+        <UpdateSuperhero id={id} setModal={setModal} setEdit={setEdit} />
+      )}
+      <SuperheroesList
+        setModal={setModal}
+        setId={setId}
+        edit={edit}
+        setEdit={setEdit}
+      />
     </div>
   );
 }

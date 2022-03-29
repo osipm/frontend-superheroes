@@ -3,7 +3,7 @@ import FormInput from '../formInput/formInput';
 import { useState } from 'react';
 import style from './updateSuperhero.module.css';
 
-function UpdateSuperhero({ setModal, id }) {
+function UpdateSuperhero({ setModal, id, setEdit }) {
   const [nickname, setNickname] = useState('');
   const [real_name, setReal_name] = useState('');
   const [origin_description, setOrigin_description] = useState('');
@@ -20,7 +20,9 @@ function UpdateSuperhero({ setModal, id }) {
       catch_phrase: catch_phrase,
       Images: Images,
     };
-    const body = await updateSuperheroes(id, Superhero);
+    const body = await updateSuperheroes(id, Superhero).finally(() =>
+      setEdit(id),
+    );
     alert(`superguru ${body.nickname} created`);
   };
   const addSuperhero = e => {

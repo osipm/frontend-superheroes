@@ -29,14 +29,14 @@ function FormInput({
           className={style.inputForm}
           type="text"
           value={real_name}
-          placeholder="real_name"
+          placeholder="real name"
           onChange={e => setReal_name(e.target.value)}
         />
         <input
           className={style.inputForm}
           type="text"
           value={origin_description}
-          placeholder="origin_description"
+          placeholder="origin description"
           onChange={e => setOrigin_description(e.target.value)}
         />
         <input
@@ -50,7 +50,7 @@ function FormInput({
           className={style.inputForm}
           type="text"
           value={catch_phrase}
-          placeholder="catch_phrase"
+          placeholder="catch phrase"
           onChange={e => setCatch_phrase(e.target.value)}
         />
         <input
