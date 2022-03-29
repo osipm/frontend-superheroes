@@ -55,9 +55,8 @@ function FormInput({
         />
         <input
           className={style.inputForm}
-          type="text"
-          value={Images}
-          placeholder="Images"
+          name="myFile"
+          type="file"
           onChange={e => setImages(e.target.value)}
         />
       </form>

@@ -54,6 +54,7 @@ function UpdateSuperhero({ setModal, id, setEdit }) {
           setImages={setImages}
           addSuperhero={addSuperhero}
         />
+        <button onClick={() => setModal(false)}>close</button>
       </div>
     </div>
   );
