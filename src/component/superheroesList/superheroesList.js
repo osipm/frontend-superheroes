@@ -46,8 +46,10 @@ function SuperheroesList({ setModal, setId, edit, setEdit }) {
               <strong>catch_phrase:</strong> {item.catch_phrase}
             </li>
             <li>
-              <img src={item.Images} alt={item.nickname} />
-              {/* <strong>Images:</strong> {item.Images} */}
+              <img
+                src={`http://localhost:4000/${item.Images}`}
+                alt={item.nickname}
+              />
             </li>
           </ul>
           <div>

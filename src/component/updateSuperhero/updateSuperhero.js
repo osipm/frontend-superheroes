@@ -9,17 +9,17 @@ function UpdateSuperhero({ setModal, id, setEdit }) {
   const [origin_description, setOrigin_description] = useState('');
   const [superpowers, setSuperpowers] = useState('');
   const [catch_phrase, setCatch_phrase] = useState('');
-  const [Images, setImages] = useState('');
+  const [Images, setImages] = useState();
 
-  const fetchSuperheroes = async () => {
-    const Superhero = {
-      nickname: nickname,
-      real_name: real_name,
-      origin_description: origin_description,
-      superpowers: superpowers,
-      catch_phrase: catch_phrase,
-      Images: Images,
-    };
+  const upSuperhero = async () => {
+    const Superhero = new FormData();
+    Superhero.append('nickname', nickname);
+    Superhero.append('real_name', real_name);
+    Superhero.append('origin_description', origin_description);
+    Superhero.append('superpowers', superpowers);
+    Superhero.append('catch_phrase', catch_phrase);
+    Superhero.append('image', Images);
+
     const body = await updateSuperheroes(id, Superhero).finally(() =>
       setEdit(id),
     );
@@ -27,7 +27,8 @@ function UpdateSuperhero({ setModal, id, setEdit }) {
   };
   const addSuperhero = e => {
     e.preventDefault();
-    fetchSuperheroes();
+    console.log(id);
+    upSuperhero();
     setNickname('');
     setReal_name('');
     setOrigin_description('');
@@ -50,7 +51,6 @@ function UpdateSuperhero({ setModal, id, setEdit }) {
           setSuperpowers={setSuperpowers}
           catch_phrase={catch_phrase}
           setCatch_phrase={setCatch_phrase}
-          Images={Images}
           setImages={setImages}
           addSuperhero={addSuperhero}
         />

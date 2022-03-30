@@ -20,7 +20,7 @@ function AddFormSuperhero({ setEdit }) {
     Superhero.append('image', Images);
 
     const body = await addSuperheroes(Superhero).finally(() =>
-      setEdit(nickname),
+      setEdit(new Date()),
     );
     alert(`superguru ${body.nickname} created`);
   };

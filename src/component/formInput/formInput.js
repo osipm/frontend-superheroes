@@ -11,7 +11,6 @@ function FormInput({
   setSuperpowers,
   catch_phrase,
   setCatch_phrase,
-  Images,
   setImages,
   addSuperhero,
 }) {
