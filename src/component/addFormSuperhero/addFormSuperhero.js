@@ -11,15 +11,6 @@ function AddFormSuperhero({ setEdit }) {
   const [Images, setImages] = useState();
 
   const newSuperheroes = async () => {
-    // const Superhero = {
-    //   nickname: nickname,
-    //   real_name: real_name,
-    //   origin_description: origin_description,
-    //   superpowers: superpowers,
-    //   catch_phrase: catch_phrase,
-    //   Images: Images,
-    // };
-
     const Superhero = new FormData();
     Superhero.append('nickname', nickname);
     Superhero.append('real_name', real_name);
