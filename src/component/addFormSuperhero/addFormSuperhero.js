@@ -8,17 +8,26 @@ function AddFormSuperhero({ setEdit }) {
   const [origin_description, setOrigin_description] = useState('');
   const [superpowers, setSuperpowers] = useState('');
   const [catch_phrase, setCatch_phrase] = useState('');
-  const [Images, setImages] = useState('');
+  const [Images, setImages] = useState();
 
   const newSuperheroes = async () => {
-    const Superhero = {
-      nickname: nickname,
-      real_name: real_name,
-      origin_description: origin_description,
-      superpowers: superpowers,
-      catch_phrase: catch_phrase,
-      Images: Images,
-    };
+    // const Superhero = {
+    //   nickname: nickname,
+    //   real_name: real_name,
+    //   origin_description: origin_description,
+    //   superpowers: superpowers,
+    //   catch_phrase: catch_phrase,
+    //   Images: Images,
+    // };
+
+    const Superhero = new FormData();
+    Superhero.append('nickname', nickname);
+    Superhero.append('real_name', real_name);
+    Superhero.append('origin_description', origin_description);
+    Superhero.append('superpowers', superpowers);
+    Superhero.append('catch_phrase', catch_phrase);
+    Superhero.append('image', Images);
+
     const body = await addSuperheroes(Superhero).finally(() =>
       setEdit(nickname),
     );
@@ -26,6 +35,7 @@ function AddFormSuperhero({ setEdit }) {
   };
   const addSuperhero = e => {
     e.preventDefault();
+
     newSuperheroes();
     setNickname('');
     setReal_name('');

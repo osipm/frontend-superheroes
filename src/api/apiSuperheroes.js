@@ -9,7 +9,7 @@ export const getSuperheroes = async () => {
   return data;
 };
 
-export const addSuperheroes = async (newSuperheroes, a) => {
+export const addSuperheroes = async newSuperheroes => {
   const { data } = await axios
     .post('http://localhost:4000/api/superheroes', newSuperheroes)
     .catch(function (error) {

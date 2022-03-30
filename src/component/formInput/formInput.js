@@ -55,9 +55,12 @@ function FormInput({
         />
         <input
           className={style.inputForm}
-          name="myFile"
+          name="Image"
           type="file"
-          onChange={e => setImages(e.target.value)}
+          onChange={e => {
+            const file = e.target.files[0];
+            setImages(file);
+          }}
         />
       </form>
       <button onClick={addSuperhero}>Add superhero</button>
